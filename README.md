@@ -1,57 +1,40 @@
-# Tour-guide-directory-
-Telephone directory to find tour guide mobile number:
-
-PROGRAM CODE:
+c program:
 #include <stdio.h>
-#include <string.h>
 
-struct Location {
-    char place[20];
-    int pincode;
-    char guide_name[20];
-    long long guide_number;
-};
+int Prime(int n, int i)
+{
+   
+    if (i == 1)
+        return 1;
 
-int main() {
-    struct Location L[11] = 
-    {
-        {"Pune", 411001, "Rahul", 9876543210},
-        {"Mumbai", 400001, "Amit", 9988776655},
-        {"Delhi", 110001, "Rohan", 9090909090},
-        {"Goa", 403001, "Suresh", 8800223344},
-        {"Nashik", 422001, "Prakash", 9123456780},
-        {"Satara", 415001, "Ramesh", 9922334252},
-        {"Nagpur", 440007, "Mahesh", 9157257268},
-        {"Kolhapur", 416001, "Gauri", 997527266},
-        {"Jalgaon",425001,"Saloni",953625274},
-        {"Ahmednagar",414001,"Ahmed",764835833},
-        {"Amravati",414001,"Aditi",9463724836},
-        
-        
-        
-    };
+    if (n % i == 0)
+        return 0;
 
-    char user_place[20];
-    int found = 0;
+    return Prime(n, i - 1);
+}
 
-    printf("Enter location name: ");
-    scanf("%s", user_place);
+int main()
+{
+    int n;
 
-    for (int i = 0; i < 11; i++) {
-        if (strcmp(user_place, L[i].place) == 0) {
-            printf("\n--- Travel Guide Details ---\n");
-            printf("Place: %s\n", L[i].place);
-            printf("Pincode: %d\n", L[i].pincode);
-            printf("Guide Name: %s\n", L[i].guide_name);
-            printf("Guide Number: %lld\n", L[i].guide_number);
-            found = 1;
-    
-        }
+    printf("Enter a number: ");
+    scanf("%d", &n);
+
+ 
+    if (n <= 1) 
+{
+        printf("%d is NOT a prime number.\n", n);
+     
     }
 
-    if (!found) {
-        printf("\nLocation not found in database.\n");
-    }
-
+   
+    if (Prime(n, n / 2))
+{
+        printf("%d is a PRIME number.\n", n);
+}
+    else
+{
+        printf("%d is NOT a prime number.\n", n);
+}
     return 0;
 }
